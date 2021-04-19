@@ -1,0 +1,97 @@
+﻿<Page x:Class="LibraryWork.pages.mainpage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryWork.pages"
+      mc:Ignorable="d" Loaded="Page_Loaded"
+      d:DesignHeight="600" d:DesignWidth="1200"
+      Title="mainpage">
+
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Grid>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Button x:Name="exitbtn" Content="Выход" Width="70" Margin="10 0 0 0" Click="exitbtn_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10 0 0 0" HorizontalAlignment="Right" >
+                <Button Margin="5" Content="Добавить" x:Name="btnadd" Click="btnadd_Click"/>
+                <Button Margin="5" Content="Редактировать" x:Name="btnedit" Click="btnedit_Click"/>
+                <Button Margin="5" Content="Удалить" x:Name="btndelete" Click="btndelete_Click"/>
+
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="350  0 0 0">
+                
+            <Label Content="Поиск:"/>
+            <TextBox BorderBrush="Black" Width="400" x:Name="tbsearch" TextChanged="tbsearch_TextChanged"></TextBox>
+
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1">
+
+            <DataGrid x:Name="MainGrid" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="MainGrid_SelectionChanged">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn
+                        Header="Книга"
+                        Width="*"
+                        Binding="{Binding Books.Title}"/>
+
+                    <DataGridTextColumn
+                        Header="Автор"
+                        Width="*"
+                        Binding="{Binding Books.Author}"/>
+
+                    <DataGridTextColumn
+                        Header="Имя читателя"
+                        Width="*"
+                        Binding="{Binding Name}"/>
+
+                    <DataGridTextColumn
+                        Header="Фамилия читателя"
+                        Width="*"
+                        Binding="{Binding Surname}"/>
+
+                    <DataGridTextColumn
+                        Header="Адресс читателя"
+                        Width="*"
+                        Binding="{Binding InfoReader.HomeAddress}"/>
+
+                    <DataGridTextColumn
+                        Header="Телефон читателя"
+                        Width="*"
+                        Binding="{Binding InfoReader.Telephone}"/>
+
+
+                    <DataGridTextColumn
+                        Header="Дата выдачи книги"
+                        Width="*"
+                        Binding="{Binding Extradition.DateOfIssue, StringFormat={}{0: dd.MM.yyyy}}"/>
+
+
+                    <DataGridTextColumn
+                        Header="Дата возврата книги"
+                        Width="*"
+                        Binding="{Binding Return.ReturnDate, StringFormat={}{0: dd.MM.yyyy}}"/>
+
+                </DataGrid.Columns>
+
+
+
+
+            </DataGrid>
+        </StackPanel>
+
+
+    </Grid>
+</Page>
