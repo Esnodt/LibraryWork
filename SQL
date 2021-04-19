@@ -1,0 +1,52 @@
+CREATE DATABASE [Library]
+
+use [Library]
+
+
+CREATE TABLE [Readers]
+(
+[ID] INT PRIMARY KEY IDENTITY (1,1),
+[Name] NVARCHAR(MAX),
+[Surname] NVARCHAR(MAX),
+[idInfoReader]  INT CONSTRAINT			idInfoReadere_Readers_InfoReader_ID FOREIGN KEY REFERENCES [InfoReader]([ID]) NOT NULL,
+[idBooks]  INT CONSTRAINT				idBooks_Readers_Books_ID FOREIGN KEY REFERENCES [Books]([ID]) NOT NULL,
+[idBookExtradition] INT CONSTRAINT		idBookExtradition_Readers_Extradition_ID FOREIGN KEY REFERENCES [Extradition]([ID]) NOT NULL,
+[idBookReturn] INT CONSTRAINT			idBookReturn_Readers_Return_ID FOREIGN KEY REFERENCES [Return]([ID]) NOT NULL,
+)
+
+CREATE TABLE [InfoReader]
+(
+[ID] INT PRIMARY KEY IDENTITY (1,1),
+[HomeAddress] NVARCHAR(MAX),
+[Telephone] NVARCHAR(MAX),
+)
+
+CREATE TABLE [Books]
+(
+[ID] INT PRIMARY KEY IDENTITY (1,1),
+[Title] NVARCHAR(MAX),
+[Author] NVARCHAR(MAX),
+)
+
+CREATE TABLE [Extradition]
+(
+[ID] INT PRIMARY KEY IDENTITY (1,1),
+[DateOfIssue] DATE
+)
+
+CREATE TABLE [Return]
+(
+[ID] INT PRIMARY KEY IDENTITY (1,1),
+[ReturnDate] DATE
+)
+
+INSERT [Readers]([Name],[Surname],[idInfoReader], [idBooks], [idBookExtradition], [idBookReturn]) VALUES ('Иван','Иванов','1','1','1','1')
+INSERT [InfoReader]([HomeAddress],[Telephone]) VALUES ('Ленина 13','+7923-434-13-42')
+INSERT [Books]([Title],[Author]) VALUES ('Властелиц колец','Толкиен')
+INSERT [Extradition]([DateOfIssue]) VALUES ('12-12-12')
+INSERT [Return]([ReturnDate]) VALUES ('11-11-11')
+
+
+
+
+
